@@ -9,4 +9,4 @@ cmds = [
 ]
 
 [start]
-cmd = "cd ScreenSound.API && dotnet out/ScreenSound.API.dll"
+cmd = "dotnet ./ScreenSound.API/out/ScreenSound.API.dll"
