@@ -2,13 +2,14 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /app
 
-# Copia csproj e restaura pacotes
-COPY *.csproj ./
+# Copia a solução e restaura os pacotes
+COPY *.sln ./
+COPY ScreenSound.API/*.csproj ./ScreenSound.API/
 RUN dotnet restore
 
-# Copia tudo e publica
+# Copia todo o código e publica
 COPY . ./
-RUN dotnet publish -c Release -o out
+RUN dotnet publish ScreenSound.API/ScreenSound.API.csproj -c Release -o out
 
 # Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
