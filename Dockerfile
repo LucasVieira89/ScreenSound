@@ -2,9 +2,12 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /app
 
-# Copia a solução e o projeto
+# Copia a solução e todos os projetos
 COPY *.sln ./
+COPY ScreenSound.csproj ./           
 COPY ScreenSound.API/*.csproj ./ScreenSound.API/
+COPY ScreenSound.Share.Dados/*.csproj ./ScreenSound.Share.Dados/
+COPY ScreenSound.Share.Modelos/*.csproj ./ScreenSound.Share.Modelos/
 
 # Restaura os pacotes
 RUN dotnet restore
